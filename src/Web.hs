@@ -4,25 +4,18 @@
 module Web (server) where
 
 import qualified Data.Text as T
-import qualified Control.Concurrent.STM as STM
 import qualified Web.Scotty as S
 import qualified Lucid as H
 import           Network.Wai.Middleware.Static
 import           Control.Monad.IO.Class (liftIO)
-import qualified Control.Monad
-import Control.Monad
+import           Control.Monad
 import qualified Baza as D
-import Data.String
-import Data.Text.Encoding (encodeUtf8)
-import Crypto.Hash (SHA256, Digest, hash)
-import Data.ByteArray (convert)
-import Data.ByteString.Char8 (ByteString, unpack, pack)
+import           Data.String
 
 type Html = H.Html()
 
 format :: [a] -> [a]
 format s = reverse (drop 1 (reverse (drop 1 s)))
-
 
 server :: IO ()
 server = do
