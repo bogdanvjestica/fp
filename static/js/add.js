@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    $("#msg").css("display", "none")
     $("#insert").submit(function () {
         let name = $("#name").val()
         let content = $("#content").val().replace(/\n/g, "<br />");
@@ -15,10 +14,11 @@ $(document).ready(function () {
             success: function(data) {
                 let v = JSON.parse(data)
                 if (v["success"] == "true") {
-                    $('#msgID').text("Uspjesno ste dodali novu objavu.")
-                    $("#msg").css("display", "inline-block")
-                    $('#name').val("")
-                    $('#content').val("") 
+                    $('#allow').text("Saving data ... Please wait!")
+                    $("#allow").css("display", "block")    
+                    setTimeout(function () {
+                        window.location.href = '/news'
+                    }, 3000)
                 }
             },
             error: function() {

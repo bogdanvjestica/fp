@@ -53,22 +53,22 @@ $(document).ready(function () {
                 method: "POST",
                 data: pack,
                 success: function() {
-                    location.reload();
+                    $('#allow').text("Removing data ... Please wait!")
+                    $("#allow").css("display", "block")    
+                    setTimeout(function () {
+                        location.reload()
+                    }, 3000)
                 },
                 error: function() {
                     console.log("Desila se greska.")
-                },
-                timeout: 3000
+                }
             })
             return false
         }
     })
 
     $("[id^='update-']").submit(function () {
-        console.log(active)
-        console.log($(this).attr('id'))
         let f = $(this)
-        console.log("update-" + active)
         if(f.attr('id') == "update-" + active) {
             let id = $("#postID-" + active).val()
             let name = $("#name-" + active).val()
@@ -87,7 +87,11 @@ $(document).ready(function () {
                 success: function(data) {
                     let v = JSON.parse(data)
                     if (v["success"] == "true") {
-                        location.reload()
+                        $('#allow').text("Saving data ... Please wait!")
+                        $("#allow").css("display", "block")    
+                        setTimeout(function () {
+                            location.reload()
+                        }, 3000)
                     }
                 },
                 error: function() {

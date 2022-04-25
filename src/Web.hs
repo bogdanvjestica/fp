@@ -53,6 +53,8 @@ server = do
                 H.body_ $ do
                     H.div_ [ H.class_ "container pt-3 pb-5" ] $ do
                         H.div_ [ H.class_ "row" ] $ do
+                            H.div_ [ H.class_ "col-md-10 offset-1", H.id_ "msg" ] $ do
+                                H.div_ [ H.class_ "alert alert-success alert-dismissable", H.role_ "alert", H.id_ "allow", H.style_ "display: none;"] ""
                             H.div_ [ H.class_ "col-md-12" ] $ do
                                 H.a_ [H.href_ "/add", H.class_ "btn btn-primary float-right add", H.style_ "display: none;" ] "Add Post"
                             forM_ l $ \l -> do
@@ -69,7 +71,7 @@ server = do
                                             H.input_ [ H.type_ "button", H.id_ $ fromString $ head l , H.class_ "btn btn-primary more", H.value_ "Read more"]
 
                                 H.div_ [ H.class_ "col-md-10 offset-1", H.id_ $ fromString $ "more-" ++ head l, H.style_ "display: none;" ] $ do
-                                    H.div_ [ H.class_ "card mt-3 bg-light bg-gradient" ] $ do
+                                    H.div_ [ H.class_ "card bg-light bg-gradient" ] $ do
                                         H.div_ [ H.class_ "card-body" ] $ do
                                             H.h5_ [ H.class_ "card-title" ] $ do
                                                 H.toHtml $ l !! 3
@@ -81,7 +83,7 @@ server = do
                                             H.input_ [ H.type_ "button", H.id_ $ fromString $ "closebtn-" ++ head l, H.class_ "btn btn-danger", H.value_ "Close"]
 
                                 H.div_ [ H.class_ "col-md-10 offset-1", H.id_ $ fromString $ "more-admin-" ++ head l, H.style_ "display: none;" ] $ do
-                                    H.div_ [ H.class_ "card mt-3 bg-light bg-gradient" ] $ do
+                                    H.div_ [ H.class_ "card bg-light bg-gradient" ] $ do
                                         H.div_ [ H.class_ "card-body" ] $ do
                                             H.form_ [ H.method_ "post", H.id_ $ fromString $ "update-" ++ head l ] $ do
                                                 H.input_ [ H.type_ "hidden", H.value_ $ fromString $ head l, H.id_ $ fromString $ "postID-" ++ head l ]
@@ -120,7 +122,7 @@ server = do
                 H.body_ $ do
                     H.div_ [ H.class_ "container pt-3" ] $ do
                         H.div_ [ H.class_ "col-md-8 offset-2", H.id_ "msg" ] $ do
-                            H.div_ [ H.class_ "alert alert-success alert-dismissable", H.role_ "alert", H.id_ "msgID"] ""
+                            H.div_ [ H.class_ "alert alert-success alert-dismissable", H.role_ "alert", H.id_ "allow", H.style_ "display: none;"] ""
                         H.div_ [ H.class_ "col-md-8 offset-2" ] $ do
                             H.div_ [ H.class_ "card" ] $ do
                                 H.div_ [ H.class_ "card-header" ] "New Post"
